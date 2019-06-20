@@ -1,54 +1,66 @@
 package skillspages;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import utils.commonlib;
+import utils.Configfile;
 
-public class Loginpage extends commonlib{
+public class Loginpage extends Configfile{
 	
-
-    @Test(priority=1)
+	//WebDriver driver;
+	
+	
+    @BeforeMethod
 	public void navigateUrl()
 	{
-    	//open Chrome browser...//navigate to Url.
-		
-    	
-		//driver=new ChromeDriver();
-		
-		if(Browser.equals("chrome")) 
-		{
-			WebDriverManager.chromedriver().setup();
-		}
-		else if(Browser.equals("firefox"))
+    	if(Browser.equalsIgnoreCase("firefox")) 
 		{
 			WebDriverManager.firefoxdriver().setup();
+			driver=new FirefoxDriver();
+		
 		}
-		else 
+		else if(Browser.equalsIgnoreCase("ie"))
 		{
-		WebDriverManager.iedriver().setup();
+			WebDriverManager.iedriver().setup();
+			driver=new InternetExplorerDriver();
 		}
-		driver.get(Url);
-		
-		
+		else if (Browser.equalsIgnoreCase("chrome"))
+		{
+			WebDriverManager.chromedriver().setup();
+			driver=new ChromeDriver();
+		}
+    	
+    	driver.get(Url);
 	}
 	
+    
 	@Test
-	public void ValidLogin() {
-		
-		//Click on Signin button
-		//Enter Valid Login username and password.
-		//Click on Login button.
-		System.out.println("login Username ="+Username);
-	
+	public void ValidLogin() 
+   {
+		enterCredentials(Username,Password);
+			
 	}
 	
    @Test
    public void InValidLogin() {
 		
-		//Click on Signin button
-		//Enter InValid Login Username and password.
-		//Click on Login button.
-		System.out.println("login Password ="+Password);
+		enterCredentials(Username,InvPassword);
 	}
+   
+ 
+   @AfterMethod
+   public void Close() 
+   {
+	   driver.close();
+   }
+  
 }

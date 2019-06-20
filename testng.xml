@@ -1,9 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite">
-  <test thread-count="5" name="Test">
+
+ <parameter name="Url" value="http://www.skillswap.pro"/>
+ <parameter name="browser" value="firefox"/>
+ 
+ 
+  <test name="Loginpage">
+  
+        <parameter name="username" value="pras.testanalyst@gmail.com"/>
+       <parameter name="password" value="mvp4444"/>
+       
     <classes>
-      <class name="skillspages.Loginpage"/>
+    
+      <class name="skillspages.Loginpage"/>  
+      
     </classes>
-  </test> <!-- Test -->
+    
+
+
+ </test>
 </suite> <!-- Suite -->
+
+

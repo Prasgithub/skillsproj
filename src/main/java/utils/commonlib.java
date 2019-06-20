@@ -1,10 +1,21 @@
 package utils;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.testng.annotations.Parameters;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+
 
 public class commonlib {
 
@@ -13,41 +24,37 @@ public class commonlib {
 	 public static String Browser;
 	 public static String Username;
 	 public static String Password;
-	
+
 	static {
 		
-		Properties prop=new Properties();
+		
+//		String fileName = "Environment.properties";
+//        ClassLoader classLoader = new commonlib().getClass().getClassLoader();
 		
 		
-		FileInputStream objfile = null;
-		try {
-			objfile = new FileInputStream(System.getProperty("user.dir")+"C:\\Users\\Pras\\skillsproj\\src\\main\\java\\utils\\Environment.properties");
+     Properties prop;
+	try {
+		FileInputStream resourceStream = new FileInputStream("C:\\Users\\Pras\\skillsproj\\src\\main\\java\\utils\\Environment.properties");
+			
+				
+		   prop = new Properties();
+			prop.load(resourceStream);
 			
 			
-		} catch (Exception e) {
-			
-			System.out.println(e);
-		}
+	} catch (Exception e) {
 		
+		System.out.println("Error is:"+ e);
+		
+		
+		
+	} 
+       
+        		
+//	Url =prop.getProperty("url");
+//	
+//	Username=prop.getProperty("username");
+//	Password=prop.getProperty("password");
+       
 	
-			try {
-				prop.load(objfile);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		
-		Url =prop.getProperty("url");
-		Browser=prop.getProperty("browser");
-		Username=prop.getProperty("username");
-		Password=prop.getProperty("password");
-		
-	
-		
-		
 	}
-	
-	
-	
-	
-}
+	}
