@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="Test(failed)">
+  <parameter name="browser" value="firefox"/>
+  <parameter name="Url" value="http://www.skillswap.pro"/>
+  <test thread-count="5" name="Loginpage(failed)">
+    <parameter name="password" value="mvp4444"/>
+    <parameter name="username" value="pras.testanalyst@gmail.com"/>
     <classes>
       <class name="skillspages.Loginpage">
         <methods>
-          <include name="navigateUrl"/>
+          <include name="ValidLogin" invocation-numbers="0"/>
         </methods>
       </class> <!-- skillspages.Loginpage -->
     </classes>
-  </test> <!-- Test(failed) -->
+  </test> <!-- Loginpage(failed) -->
 </suite> <!-- Failed suite [Suite] -->

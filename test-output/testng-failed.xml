@@ -5,7 +5,9 @@
     <classes>
       <class name="skillspages.Loginpage">
         <methods>
+          <include name="Close"/>
           <include name="navigateUrl"/>
+          <include name="ValidLogin"/>
         </methods>
       </class> <!-- skillspages.Loginpage -->
     </classes>
